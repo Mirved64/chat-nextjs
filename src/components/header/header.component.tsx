@@ -6,16 +6,18 @@ import { USERS_LIST } from './mock-data'
 
 export const Header = () => (
   <header className={styles.header}>
-    <div className={styles.usersContainer}>
-      {USERS_LIST.map((user) => (
-        <AvatarLogo user={user} key={user.id} />
-      ))}
-    </div>
-    <div className={styles.chatBarContainer}>
-      <ChatBar />
-    </div>
-    <div className={styles.menuContainer}>
-      <Menu />
+    <div className={styles.headerContent}>
+      <div className={styles.usersContainer}>
+        {USERS_LIST.map((user) => (
+          <AvatarLogo user={user} key={user.id} />
+        ))}
+      </div>
+      <div className={styles.chatBarContainer}>
+        <ChatBar />
+      </div>
+      <div className={styles.menuContainer}>
+        <Menu />
+      </div>
     </div>
   </header>
 )

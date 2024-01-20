@@ -1,10 +1,18 @@
 .header {
   display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-basis: 68px;
+  flex-shrink: 0;
+  box-shadow: 0 -1px 0 0 var(--border-shadow-color) inset;
+}
+
+.headerContent {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-basis: 68px;
+  max-width: 656px;
   width: 100%;
-  box-shadow: 0 -1px 0 0 var(--border-shadow-color) inset;
 }
 
 .usersContainer {
@@ -14,7 +22,6 @@
   margin-left: 13px;
   flex-basis: 33.33%;
   flex-shrink: 0;
-  flex-grow: 1;
 }
 
 .chatBarContainer {
@@ -22,11 +29,9 @@
   justify-content: center;
   flex-basis: 33.33%;
   flex-shrink: 0;
-  flex-grow: 1;
 }
 
 .menuContainer {
-  flex-basis: 33.34%;
+  flex-basis: 33.33%;
   flex-shrink: 0;
-  flex-grow: 1;
 }
