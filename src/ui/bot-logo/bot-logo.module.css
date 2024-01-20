@@ -1,0 +1,33 @@
+.botLogoWrapper {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.indicatorWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+}
+
+.indicatorWhite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.indicatorGreen {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(52, 199, 89, 1);
+}

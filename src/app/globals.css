@@ -6,6 +6,8 @@
 
 :root {
   --base-background-color: rgba(255, 255, 255, 1);
+  --secondary-backround-color: rgba(0, 122, 255, 1);
+  --ghost-background-color: rgba(242, 242, 247, 1);
   --color-primary: rgba(44, 44, 46, 1);
   --color-accent: rgba(61, 61, 61, 1);
   --color-ghost: rgba(102, 102, 104, 1);
@@ -20,4 +22,6 @@
 body {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }

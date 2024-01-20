@@ -1,0 +1,77 @@
+.messageWrapper {
+  display: flex;
+  position: relative;
+  flex-basis: 40px;
+  width: fit-content;
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.messageContainer {
+  min-height: 40px;
+  display: flex;
+  max-width: 70vw;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: var(--secondary-backround-color);
+  margin-right: 10px;
+  z-index: 2;
+}
+
+.messageTextWrapper {
+  padding-bottom: 8px;
+  word-break: break-word;
+}
+
+.messageText {
+  color: var(--color-secondary);
+  font-size: var(--font-size-regular);
+  line-height: 1.4;
+}
+
+.messageTimeWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-basis: 50px;
+  flex-shrink: 0;
+  height: 100%;
+  margin-right: 4px;
+}
+
+.messageTime {
+  color: var(--color-secondary);
+  font-size: var(--font-size-normal);
+  line-height: 1.4;
+}
+
+.triangle {
+  position: absolute;
+  background-color: var(--base-background-color);
+  border-radius: 10px;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  color: #fff;
+}
+
+.triangle::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid var(--secondary-backround-color);
+  z-index: 2;
+}
+
+.messageButtonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,72 @@
+.wrapper {
+  display: flex;
+  margin-left: 16px;
+}
+
+.messageWrapper {
+  display: flex;
+  position: relative;
+  flex-basis: 264px;
+  width: fit-content;
+  padding-left: 4px;
+  margin-bottom: 16px;
+}
+
+.messageContainer {
+  flex-basis: 180px;
+  min-height: 40px;
+  display: flex;
+  max-width: 70vw;
+  padding: 4px 8px 4px 6px;
+  background-color: var(--ghost-background-color);
+  margin-left: 5px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.messageTextWrapper {
+  flex-shrink: 0;
+  flex-basis: 100px;
+}
+
+.messageText {
+  color: var(--color-primary);
+  font-size: var(--font-size-regular);
+  line-height: 1.4;
+}
+
+.messageTimeWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-basis: 50px;
+  flex-shrink: 0;
+  height: 100%;
+  margin-right: 4px;
+}
+
+.messageTime {
+  color: var(--color-ghost);
+  font-size: var(--font-size-normal);
+  line-height: 1.4;
+}
+
+.triangle {
+  background-color: var(--base-background-color);
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 4px;
+  color: #fff;
+}
+
+.triangle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 10px solid transparent;
+  border-top: 10px solid var(--ghost-background-color);
+  z-index: 2;
+}

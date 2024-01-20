@@ -1,0 +1,12 @@
+.dateBarWrapper {
+  flex-basis: 14px;
+  width: 100%;
+  margin: 17px 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.date {
+  font-size: var(--font-size-normal);
+  color: var(--color-ghost);
+}

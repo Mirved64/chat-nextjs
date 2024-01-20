@@ -1,0 +1,25 @@
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  max-width: 656px;
+  width: 100%;
+}
+
+.main::-webkit-scrollbar {
+  width: 4px;
+}
+.main::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary);
+}
