@@ -2,8 +2,7 @@
 
 import { useId, useState } from 'react'
 import { ButtonSend } from '@/ui/button'
-import { InputText } from '@/ui/input'
-import { InputFile } from '@/ui/input/input-file'
+import { InputText, InputFile } from '@/ui/input'
 import styles from './message-form.module.css'
 
 export const MessageForm = () => {

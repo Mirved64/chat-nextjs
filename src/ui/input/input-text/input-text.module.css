@@ -1,8 +1,9 @@
 .inputText {
-  width: 520px;
+  max-width: 520px;
   height: 20px;
   border: none;
   outline: none;
+  flex-grow: 1;
 }
 
 .inputText::placeholder {
