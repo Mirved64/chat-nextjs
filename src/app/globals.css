@@ -7,10 +7,17 @@
 :root {
   --base-background-color: rgba(255, 255, 255, 1);
   --color-primary: rgba(44, 44, 46, 1);
+  --color-accent: rgba(61, 61, 61, 1);
   --color-ghost: rgba(102, 102, 104, 1);
   --color-secondary: rgba(255, 255, 255, 1);
   --font-size-normal: 12px;
   --font-size-regular: 14px;
   --font-weight-normal: 400;
   --font-weight-semi-bold: 600;
+  --border-shadow-color: #E5E5EA;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }

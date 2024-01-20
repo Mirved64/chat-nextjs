@@ -1,0 +1,11 @@
+.sendButton {
+  display: flex;
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: var(--base-background-color);
+  margin-right: 16px;
+  justify-content: center;
+  align-items: center;
+}

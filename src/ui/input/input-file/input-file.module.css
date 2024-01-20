@@ -1,0 +1,9 @@
+.inputFile {
+  display: none;
+}
+
+.labelInputFile {
+  width: 16px;
+  height: 16px;
+  margin: 0 16px 0 12px;
+}

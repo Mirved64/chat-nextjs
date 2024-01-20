@@ -1,10 +1,13 @@
+import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import styles from './page.module.css'
 
 const Home = () => (
-  <main className={styles.main}>
+  <>
     <Header />
-  </main>
+    <main className={styles.main} />
+    <Footer />
+  </>
 )
 
 export default Home
