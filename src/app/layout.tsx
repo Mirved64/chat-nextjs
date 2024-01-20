@@ -1,8 +1,13 @@
-import { Inter } from 'next/font/google'
+import { Jost } from 'next/font/google'
 import type { Metadata } from 'next'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const jost = Jost({
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  subsets: ['cyrillic', 'latin'],
+})
 
 export const metadata: Metadata = {
   title: 'Chat Next.js',
@@ -16,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={jost.className}>{children}</body>
     </html>
   )
 }
