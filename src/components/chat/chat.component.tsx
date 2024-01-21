@@ -6,7 +6,7 @@ import styles from './chat.module.css'
 import { useChat } from './hooks'
 
 export const Chat = () => {
-  const { chatHistory, bottomRef, deleteMessage, editMessage } = useChat()
+  const { chatHistory, bottomRef, deleteMessage, editMessageHandler } = useChat()
   return (
     <main className={styles.main}>
       <div className={styles.mainContent}>
@@ -19,7 +19,7 @@ export const Chat = () => {
               text={message.content}
               date={message.messageDate}
               key={message.id}
-              editMessage={() => editMessage}
+              editMessage={() => editMessageHandler(message)}
               deleteMessage={() => deleteMessage(message)}
             />
           ),
