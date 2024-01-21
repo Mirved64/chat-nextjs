@@ -1,9 +1,18 @@
 .inputFile {
-  display: none;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .labelInputFile {
-  width: 16px;
-  height: 16px;
-  margin: 0 16px 0 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin: 0 12px 0 8px;
+  cursor: pointer;
 }

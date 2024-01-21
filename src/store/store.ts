@@ -8,18 +8,20 @@ export const useChatStore = create<ChatState>()(
       (set, get) => ({
         chatHistory: [],
         currentMessage: null,
-        messageContent: '',
+        currentMessageText: '',
+        currentMessageImageURL: null,
         setCurrentMessage: (message) => set({ currentMessage: message }),
         isSubmit: true,
-        toggleSubmit: () => set((state) => ({ isSubmit: !state.isSubmit })),
+        toggleIsSubmit: () => set((state) => ({ isSubmit: !state.isSubmit })),
         addMessage: (message) =>
           set((state) => ({
             chatHistory: [...state.chatHistory, message],
           })),
-        setMessageContent: (content) => set({ messageContent: content }),
-        editMessage: (message, newMessage) => {
+        setCurrentMessageText: (text) => set({ currentMessageText: text }),
+        setCurrentMessageImageURL: (imageURL) => set({ currentMessageImageURL: imageURL }),
+        editMessage: (message, newMessage, newImageURL) => {
           const editChatHistory = get().chatHistory.map((el) =>
-            el.id === message.id ? { ...el, content: newMessage } : el,
+            el.id === message.id ? { ...el, text: newMessage, imageURL: newImageURL } : el,
           )
           set({ chatHistory: editChatHistory })
         },

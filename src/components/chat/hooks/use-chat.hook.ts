@@ -5,27 +5,34 @@ import { Message } from '@/store'
 export const useChat = (): {
   bottomRef: RefObject<HTMLDivElement>
   chatHistory: Message[]
-  editMessageHandler: (message: Message) => void
+  handleEditMessage: (message: Message) => void
   deleteMessage: (message: Message) => void
 } => {
-  const { chatHistory, deleteMessage, setMessageContent, toggleSubmit, setCurrentMessage } =
-    useChatStore()
+  const {
+    chatHistory,
+    deleteMessage,
+    setCurrentMessageText,
+    toggleIsSubmit,
+    setCurrentMessage,
+    setCurrentMessageImageURL,
+  } = useChatStore()
   const bottomRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     bottomRef.current?.scrollIntoView({
       behavior: 'smooth',
     })
   }, [chatHistory])
-  const editMessageHandler = (message: Message) => {
+  const handleEditMessage = (message: Message) => {
+    toggleIsSubmit()
     let findMessage = chatHistory.find((el) => el.id === message.id)
     setCurrentMessage(findMessage!)
-    toggleSubmit()
-    setMessageContent(message.content)
+    setCurrentMessageText(message.text!)
+    setCurrentMessageImageURL(message.imageURL!)
   }
   return {
     bottomRef,
     chatHistory,
-    editMessageHandler,
+    handleEditMessage,
     deleteMessage,
   }
 }

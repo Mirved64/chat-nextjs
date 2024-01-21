@@ -12,6 +12,5 @@ export const InputText: FC<InputTextProps> = ({ id, value, onChange, onFocus, on
     onChange={onChange}
     onFocus={onFocus}
     onBlur={onBlur}
-    required
   />
 )

@@ -1,34 +1,60 @@
 import dayjs from 'dayjs'
-import { ChangeEvent, ChangeEventHandler, FormEvent, FormEventHandler, useId } from 'react'
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  FormEvent,
+  FormEventHandler,
+  useId,
+  useState,
+} from 'react'
 import { useChatStore } from '@/store'
 
 export const useMessageForm = (): {
   formId: string
-  handleChange: ChangeEventHandler<HTMLInputElement>
-  handleSubmit: FormEventHandler<HTMLFormElement>
-  messageContent: string
-  isSubmit: boolean
+  handleOnChangeText: ChangeEventHandler<HTMLInputElement>
+  handleOnSubmit: FormEventHandler<HTMLFormElement>
+  currentMessageText: string
+  handleOnChangeImage: ChangeEventHandler<HTMLInputElement>
+  currentMessageImageURL: string | ArrayBuffer | null
 } => {
   const formId = useId()
   const {
     addMessage,
-    messageContent,
-    setMessageContent,
+    currentMessageText,
+    setCurrentMessageText,
     isSubmit,
     editMessage,
-    toggleSubmit,
+    toggleIsSubmit,
     currentMessage,
+    currentMessageImageURL,
+    setCurrentMessageImageURL,
   } = useChatStore()
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setMessageContent(event.target.value)
+  const [_, setImage] = useState<File | null>(null)
+  const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>(null)
+  const fileReader = new FileReader()
+  fileReader.onloadend = () => {
+    setImageURL(fileReader.result)
+    setCurrentMessageImageURL(fileReader.result)
   }
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleOnChangeText = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentMessageText(event.target.value)
+  }
+  const handleOnChangeImage: ChangeEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault()
+    if (event.currentTarget.files && event.currentTarget.files.length) {
+      const file = event.currentTarget.files[0]
+      fileReader.readAsDataURL(file)
+      setImage(file)
+    }
+  }
+  const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (isSubmit) {
       addMessage({
         id: Number(dayjs()),
         authorId: 1,
-        content: messageContent,
+        text: currentMessageText,
+        imageURL: imageURL,
         messageDate: dayjs().format('HH:mm A'),
       })
       const botMessage = setTimeout(
@@ -36,20 +62,33 @@ export const useMessageForm = (): {
           addMessage({
             id: Number(dayjs()),
             authorId: 0,
-            content: 'Hello World!',
+            text: 'Hello World!',
             messageDate: dayjs().format('HH:mm A'),
           }),
         2000,
       )
-      setMessageContent('')
+      setImageURL(null)
+      setCurrentMessageImageURL(null)
+      setCurrentMessageText('')
       return () => {
         clearTimeout(botMessage)
       }
     } else {
-      toggleSubmit()
-      currentMessage !== null && editMessage(currentMessage, messageContent)
-      setMessageContent('')
+      if (currentMessage !== null) {
+        editMessage(currentMessage, currentMessageText, currentMessageImageURL)
+        setImageURL(null)
+        setCurrentMessageImageURL(null)
+        setCurrentMessageText('')
+        toggleIsSubmit()
+      }
     }
   }
-  return { formId, handleChange, handleSubmit, messageContent, isSubmit }
+  return {
+    formId,
+    handleOnChangeText,
+    handleOnSubmit,
+    currentMessageText,
+    handleOnChangeImage,
+    currentMessageImageURL,
+  }
 }

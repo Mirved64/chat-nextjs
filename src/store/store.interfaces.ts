@@ -7,18 +7,25 @@ export interface User {
 export interface Message {
   id: number
   authorId: number
-  content: string
+  text?: string
+  imageURL?: string | ArrayBuffer | null
   messageDate: string
 }
 export interface ChatState {
   chatHistory: Message[]
   currentMessage: Message | null
   setCurrentMessage: (message: Message) => void
-  messageContent: string
-  setMessageContent: (content: string) => void
+  currentMessageText: string
+  setCurrentMessageText: (text: string) => void
+  currentMessageImageURL: string | ArrayBuffer | null
+  setCurrentMessageImageURL: (imageURL: string | ArrayBuffer | null) => void
   isSubmit: boolean
-  toggleSubmit: () => void
+  toggleIsSubmit: () => void
   addMessage: (message: Message) => void
-  editMessage: (message: Message, newMessage: string) => void
+  editMessage: (
+    message: Message,
+    newMessage: string,
+    newImageURL: string | ArrayBuffer | null,
+  ) => void
   deleteMessage: (message: Message) => void
 }

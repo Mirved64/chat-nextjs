@@ -1,3 +1,7 @@
+import { ChangeEventHandler } from 'react'
+
 export interface InputFileProps {
-  id: string
+  onChange: ChangeEventHandler<HTMLInputElement>
+  onFocus: () => void
+  onBlur: () => void
 }
