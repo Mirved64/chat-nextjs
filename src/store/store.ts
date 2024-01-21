@@ -18,7 +18,7 @@ export const useChatStore = create<ChatState>()(
           set({ chatHistory: editChatHistory })
         },
         deleteMessage: (message) => {
-          set({ chatHistory: get().chatHistory.filter((el) => el.id === message.id) })
+          set({ chatHistory: get().chatHistory.filter((el) => el.id !== message.id) })
         },
       }),
       {

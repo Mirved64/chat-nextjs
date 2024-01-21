@@ -1,19 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { useChatStore } from '@/store'
 import { DateBar } from '@/ui/date-bar'
 import { MessageOfBot, MessageOfUser } from '@/ui/message'
 import styles from './chat.module.css'
+import { useChat } from './hooks'
 
 export const Chat = () => {
-  const { chatHistory, editMessage, deleteMessage, addMessage } = useChatStore()
-  const bottomRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({
-      behavior: 'smooth',
-    })
-  }, [chatHistory])
+  const { chatHistory, bottomRef, deleteMessage, editMessage } = useChat()
   return (
     <main className={styles.main}>
       <div className={styles.mainContent}>
