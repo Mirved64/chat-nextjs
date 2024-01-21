@@ -1,9 +1,3 @@
-export interface User {
-  id: number
-  avatar?: string
-  isOnline?: boolean
-}
-
 export interface Message {
   id: number
   authorId: number

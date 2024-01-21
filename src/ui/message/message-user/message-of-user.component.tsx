@@ -25,7 +25,7 @@ export const MessageOfUser: FC<MessageProps> = ({
         <Condition match={!!imageURL}>
           <div className={styles.messageImgWrapper}>
             <Image
-              src={typeof imageURL === 'string' ? imageURL : ''}
+              src={typeof imageURL === 'string' ? imageURL : '/next.svg'}
               alt={'upload_img'}
               width={100}
               height={100}

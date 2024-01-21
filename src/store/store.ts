@@ -10,8 +10,8 @@ export const useChatStore = create<ChatState>()(
         currentMessage: null,
         currentMessageText: '',
         currentMessageImageURL: null,
-        setCurrentMessage: (message) => set({ currentMessage: message }),
         isSubmit: true,
+        setCurrentMessage: (message) => set({ currentMessage: message }),
         toggleIsSubmit: () => set((state) => ({ isSubmit: !state.isSubmit })),
         addMessage: (message) =>
           set((state) => ({

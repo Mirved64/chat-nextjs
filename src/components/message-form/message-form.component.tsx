@@ -1,9 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import { ButtonSend } from '@/ui/button'
 import { Condition } from '@/ui/condition'
 import { InputText, InputFile } from '@/ui/input'
+import { PreviewImage } from '@/ui/preview-image'
 import { useFocus } from '@/utills/hooks'
 import { useMessageForm } from './hooks'
 import styles from './message-form.module.css'
@@ -32,15 +32,11 @@ export const MessageForm = () => {
         isDisabled={!Boolean(currentMessageText) && !Boolean(currentMessageImageURL)}
       />
       <Condition match={currentMessageImageURL !== null}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={typeof currentMessageImageURL === 'string' ? currentMessageImageURL : './next.svg'}
-            alt={'upload_img'}
-            width={100}
-            height={100}
-            style={{ width: '100%', height: 'auto' }}
-          />
-        </div>
+        <PreviewImage
+          imageURL={
+            typeof currentMessageImageURL === 'string' ? currentMessageImageURL : './next.svg'
+          }
+        />
       </Condition>
     </form>
   )
