@@ -4,6 +4,7 @@ import {
   ChangeEventHandler,
   FormEvent,
   FormEventHandler,
+  useEffect,
   useId,
   useState,
 } from 'react'
@@ -29,13 +30,20 @@ export const useMessageForm = (): {
     currentMessageImageURL,
     setCurrentMessageImageURL,
   } = useChatStore()
-  const [_, setImage] = useState<File | null>(null)
+  const [image, setImage] = useState<File | null>(null)
   const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>(null)
-  const fileReader = new FileReader()
-  fileReader.onloadend = () => {
-    setImageURL(fileReader.result)
-    setCurrentMessageImageURL(fileReader.result)
-  }
+
+  useEffect(() => {
+    if (image) {
+      const fileReader = new FileReader()
+      fileReader.onloadend = () => {
+        setImageURL(fileReader.result)
+        setCurrentMessageImageURL(fileReader.result)
+      }
+      fileReader.readAsDataURL(image)
+    }
+  }, [image, setCurrentMessageImageURL])
+
   const handleOnChangeText = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentMessageText(event.target.value)
   }
@@ -43,8 +51,9 @@ export const useMessageForm = (): {
     event.preventDefault()
     if (event.currentTarget.files && event.currentTarget.files.length) {
       const file = event.currentTarget.files[0]
-      fileReader.readAsDataURL(file)
       setImage(file)
+    } else {
+      setImage(null)
     }
   }
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
