@@ -1,16 +1,16 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
-import { ChatState } from '@/store/store.interfaces'
+import { ChatState } from './store.interfaces'
 
-const useChatStore = create<ChatState>()(
+export const useChatStore = create<ChatState>()(
   devtools(
     persist(
       (set, get) => ({
         chatHistory: [],
-        addMessage: (message) => {
-          const messages = [...get().chatHistory, message]
-          set({ chatHistory: messages })
-        },
+        addMessage: (message) =>
+          set((state) => ({
+            chatHistory: [...state.chatHistory, message],
+          })),
         editMessage: (message, newMessage) => {
           const editChatHistory = get().chatHistory.map((el) =>
             el.id === message.id ? newMessage : el,
@@ -20,12 +20,6 @@ const useChatStore = create<ChatState>()(
         deleteMessage: (message) => {
           set({ chatHistory: get().chatHistory.filter((el) => el.id === message.id) })
         },
-        getChatHistory: () => {
-          const localHistory = localStorage.getItem('chat-storage')
-          if (localHistory !== null) {
-            set({ chatHistory: JSON.parse(localHistory) })
-          }
-        },
       }),
       {
         name: 'chat-storage',
@@ -33,5 +27,3 @@ const useChatStore = create<ChatState>()(
     ),
   ),
 )
-
-export default useChatStore

@@ -5,7 +5,7 @@ import { ButtonDelete, ButtonEdit } from '@/ui/button'
 import { MessageProps } from '../message.interfaces'
 import styles from './message-of-user.module.css'
 
-export const MessageOfUser: FC<MessageProps> = ({ text, date }) => (
+export const MessageOfUser: FC<MessageProps> = ({ text, date, deleteMessage, editMessage }) => (
   <div className={styles.messageWrapper}>
     <div className={styles.messageContainer}>
       <div className={styles.contentContainer}>
@@ -13,8 +13,8 @@ export const MessageOfUser: FC<MessageProps> = ({ text, date }) => (
           <p className={styles.messageText}>{text}</p>
         </div>
         <div className={styles.messageButtonsWrapper}>
-          <ButtonEdit onClick={() => {}} />
-          <ButtonDelete onClick={() => {}} />
+          <ButtonEdit onClick={editMessage} />
+          <ButtonDelete onClick={deleteMessage} />
         </div>
       </div>
       <div className={styles.messageTimeWrapper}>
