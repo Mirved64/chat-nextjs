@@ -1,6 +1,5 @@
 'use client'
 
-import dayjs from 'dayjs'
 import { useEffect, useRef } from 'react'
 import { useChatStore } from '@/store'
 import { DateBar } from '@/ui/date-bar'
@@ -28,7 +27,7 @@ export const Chat = () => {
               date={message.messageDate}
               key={message.id}
               editMessage={() => editMessage}
-              deleteMessage={() => deleteMessage}
+              deleteMessage={() => deleteMessage(message)}
             />
           ),
         )}
